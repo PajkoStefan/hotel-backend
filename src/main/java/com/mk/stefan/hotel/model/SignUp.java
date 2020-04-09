@@ -6,12 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
+@Entity(name="signup")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,8 +19,10 @@ public class SignUp {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name="firstname")
     private String firstName;
 
+    @Column(name="lastname")
     private String lastName;
 
     private String username;
@@ -36,6 +35,7 @@ public class SignUp {
 
     private String Birthday;
 
+    @Column(name="signupdate")
     private String signUpDate;
 
     public SignUp(String firstName, String lastName, String username,

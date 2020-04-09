@@ -28,10 +28,6 @@ public class Account {
         this.username = username;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
