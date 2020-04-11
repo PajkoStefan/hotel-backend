@@ -19,7 +19,7 @@ public class AccountController {
 
         model.addAttribute("accounts", accountRepository.findAll());
 
-        return "list";
+        return "accountlist";
     }
 }
 
