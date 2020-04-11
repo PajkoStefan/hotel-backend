@@ -34,4 +34,39 @@ public class Payment {
 
     public Payment() {
     }
+
+    public Payment(String fullName, String cardNumber, String securityCode, String expirationDateMonth, String expirationDateYear) {
+        this.fullName = fullName;
+        this.cardNumber = cardNumber;
+        this.securityCode = securityCode;
+        this.expirationDateMonth = expirationDateMonth;
+        this.expirationDateYear = expirationDateYear;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "fullName='" + fullName + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", securityCode='" + securityCode + '\'' +
+                ", expirationDateMonth='" + expirationDateMonth + '\'' +
+                ", expirationDateYear='" + expirationDateYear + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Payment payment = (Payment) o;
+
+        return id != null ? id.equals(payment.id) : payment.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
 }
