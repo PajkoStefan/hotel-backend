@@ -15,7 +15,7 @@ public class TableController {
     }
 
     @RequestMapping("/table")
-    public  String getAccounts(Model model){
+    public  String getTables(Model model){
 
         model.addAttribute("tables", tableRepository.findAll());
 

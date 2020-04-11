@@ -15,7 +15,7 @@ public class RoomController {
     }
 
     @RequestMapping("/room")
-    public  String getAccounts(Model model){
+    public  String getRooms(Model model){
 
         model.addAttribute("rooms", roomRepository.findAll());
 
