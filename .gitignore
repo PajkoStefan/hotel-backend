@@ -32,4 +32,4 @@ build/
 src/main/resources/static/
 src/main/resources/templates/
 notes
-src/main/java/com/mk/stefan/hotel/bootstrap/BootStrapData.java
+src/main/java/com/mk/stefan/hotel/bootstrap/

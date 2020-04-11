@@ -3,7 +3,6 @@ package com.mk.stefan.hotel.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,17 +11,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class SignUp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="firstname")
+    @Column(name="first_name")
     private String firstName;
 
-    @Column(name="lastname")
+    @Column(name="last_name")
     private String lastName;
 
     private String username;
@@ -33,10 +31,13 @@ public class SignUp {
 
     private String gender;
 
-    private String Birthday;
+    private String birthday;
 
-    @Column(name="signupdate")
+    @Column(name="sign_up_date")
     private String signUpDate;
+
+    public SignUp() {
+    }
 
     public SignUp(String firstName, String lastName, String username,
                   String password, String email, String gender,
@@ -48,7 +49,7 @@ public class SignUp {
         this.password = password;
         this.email = email;
         this.gender = gender;
-        Birthday = birthday;
+        this.birthday = birthday;
         this.signUpDate = signUpDate;
     }
 
@@ -60,7 +61,7 @@ public class SignUp {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
-                ", Birthday='" + Birthday + '\'' +
+                ", birthday='" + birthday + '\'' +
                 ", signUpDate='" + signUpDate + '\'' +
                 '}';
     }

@@ -2,7 +2,6 @@ package com.mk.stefan.hotel.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,7 +10,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Login {
 
     @Id
@@ -19,8 +17,12 @@ public class Login {
     private Long id;
 
     private String username;
-    @Column(name="logindate")
+
+    @Column(name="login_date")
     private String loginDate;
+
+    public Login() {
+    }
 
     public Login(String username, String loginDate) {
         this.username = username;
