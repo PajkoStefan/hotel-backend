@@ -27,9 +27,8 @@ target/
 /.nb-gradle/
 build/
 
-### VS Code ###
+### Code ###
 .vscode/
 src/main/resources/static/
 src/main/resources/templates/
 notes
-src/main/java/com/mk/stefan/hotel/bootstrap/

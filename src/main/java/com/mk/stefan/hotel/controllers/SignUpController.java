@@ -17,7 +17,7 @@ public class SignUpController {
     @RequestMapping("/signup")
     public  String getUsername(Model model){
 
-        model.addAttribute("signups", signUpRepository.findAll());
+        model.addAttribute("signup", signUpRepository.findAll());
 
         return "signuplist";
     }

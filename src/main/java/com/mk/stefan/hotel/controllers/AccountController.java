@@ -14,7 +14,7 @@ public class AccountController {
         this.accountRepository = accountRepository;
     }
 
-    @RequestMapping("/accounts")
+    @RequestMapping("/account")
     public  String getAccounts(Model model){
 
         model.addAttribute("accounts", accountRepository.findAll());
