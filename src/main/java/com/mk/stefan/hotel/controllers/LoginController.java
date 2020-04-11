@@ -18,7 +18,7 @@ public class LoginController  {
     @RequestMapping("/login")
     public  String getUsername(Model model){
 
-        model.addAttribute("login", loginRepository.findAll());
+        model.addAttribute("logins", loginRepository.findAll());
 
         return "loginlist";
     }
