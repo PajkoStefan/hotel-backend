@@ -31,7 +31,7 @@ public class Payment {
     @Column(name = "expiration_date_year")
     private String expirationDateYear;
 
-    @OneToOne
+    @OneToOne(mappedBy = "payment")
     private Account account;
 
     public Payment() {
