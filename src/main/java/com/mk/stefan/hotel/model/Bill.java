@@ -24,6 +24,8 @@ public class Bill {
 
     private String amount;
 
+    @ManyToOne
+    private Account account;
 
     public Bill() {
     }

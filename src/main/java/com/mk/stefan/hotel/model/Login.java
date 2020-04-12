@@ -21,6 +21,9 @@ public class Login {
     @Column(name="login_date")
     private String loginDate;
 
+    @OneToOne
+    private Account account;
+
     public Login() {
     }
 

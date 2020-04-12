@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,6 +22,9 @@ public class Offer {
     private String description;
 
     private String price;
+
+    @ManyToMany(mappedBy = "offers")
+    private Set<Account> account;
 
     public Offer() {
     }

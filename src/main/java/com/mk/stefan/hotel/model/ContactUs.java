@@ -27,6 +27,9 @@ public class ContactUs {
 
     private String comment;
 
+    @ManyToOne
+    private Account account;
+
     public ContactUs() {
     }
 

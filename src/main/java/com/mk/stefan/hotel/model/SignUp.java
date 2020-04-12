@@ -36,6 +36,9 @@ public class SignUp {
     @Column(name="sign_up_date")
     private String signUpDate;
 
+    @OneToOne
+    private Account account;
+
     public SignUp() {
     }
 

@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,13 +19,35 @@ public class Account {
     private Long id;
 
     private String username;
-    
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private SignUp signUp;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Login login;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Payment payment;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    private Set<Bill> bills;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    private Set<ContactUs> contactUses;
+
+    @ManyToMany
+    @JoinTable(name = "account_offer",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "offer_id"))
+    private Set<Offer> offers;
+
     public Account() {
     }
 
     public Account(String username) {
         this.username = username;
     }
+
 
     @Override
     public String toString() {
