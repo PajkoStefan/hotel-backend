@@ -21,7 +21,7 @@ public class Login {
     @Column(name="login_date")
     private String loginDate;
 
-    @OneToOne
+    @OneToOne(mappedBy = "login")
     private Account account;
 
     public Login() {
