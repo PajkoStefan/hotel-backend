@@ -1,19 +1,20 @@
-package com.mk.stefan.hotel.model;
+package com.mk.stefan.hotel.model.terneryRelationships;
 
-import com.mk.stefan.hotel.model.embeddedIds.AccountServiceOrderId;
+
+import com.mk.stefan.hotel.model.embeddedIds.AccountTableTableReservationId;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-@Entity(name = "order_service")
+@Entity(name = "reserve_table")
 @AllArgsConstructor
-public class OrderService {
+public class ReserveTable {
 
     @EmbeddedId
-    private AccountServiceOrderId id;
+    private AccountTableTableReservationId id;
 
-    public OrderService() {
+    public ReserveTable() {
     }
 
     @Override
@@ -21,7 +22,7 @@ public class OrderService {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OrderService that = (OrderService) o;
+        ReserveTable that = (ReserveTable) o;
 
         return id != null ? id.equals(that.id) : that.id == null;
     }

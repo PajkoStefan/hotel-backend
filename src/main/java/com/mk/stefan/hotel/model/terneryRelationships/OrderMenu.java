@@ -1,4 +1,4 @@
-package com.mk.stefan.hotel.model;
+package com.mk.stefan.hotel.model.terneryRelationships;
 
 import com.mk.stefan.hotel.model.embeddedIds.AccountMenuOrderId;
 import lombok.AllArgsConstructor;
