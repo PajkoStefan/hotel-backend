@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-@Entity(name = "order_service")
+@Entity(name = "order_menu")
 @AllArgsConstructor
 public class OrderMenu {
 
