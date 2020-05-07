@@ -21,7 +21,7 @@ public class Login {
     @Column(name="login_date")
     private String loginDate;
 
-    @OneToOne(mappedBy = "login")
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
     public Login() {

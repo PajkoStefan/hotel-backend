@@ -1,25 +1,51 @@
 package com.mk.stefan.hotel.controllers;
 
-import com.mk.stefan.hotel.repositories.AccountRepository;
-import com.mk.stefan.hotel.repositories.LoginRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mk.stefan.hotel.model.Login;
+import com.mk.stefan.hotel.services.login.LoginService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
-@Controller
-public class LoginController  {
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Optional;
 
-    private final LoginRepository loginRepository;
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
+public class LoginController {
 
-    public LoginController(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
+    private final LoginService loginService;
+
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
     }
 
-    @RequestMapping("/login")
-    public  String getUsernames(Model model){
+    @GetMapping("/getalllogins")
+    public List<Login> getAllLogins() {
+        return loginService.getAllLogins();
+    }
 
-        model.addAttribute("logins", loginRepository.findAll());
+    @GetMapping("/getusername/{username}")
+    public Optional<Login> getUsername(@PathVariable String username) {
 
-        return "loginlist";
+        Optional<Login> login = this.loginService.getUsername(username);
+        System.out.println("----------" + login + "-----------");
+        return login;
+    }
+
+    @PostMapping("/createlogin")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public Login createNewLogin(@RequestBody Login login,
+                                HttpServletResponse response,
+                                UriComponentsBuilder builder) {
+        Login login1 = new Login(login.getUsername(), login.getLoginDate());
+
+        response.setHeader("Location", builder.path("/api/createlogin/" + login.getId()).
+                buildAndExpand(login.getId()).toUriString());
+        //
+        return loginService.createNewLogin(login1.getUsername(), login1.getLoginDate());
+
     }
 }
