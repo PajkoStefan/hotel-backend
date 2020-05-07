@@ -1,25 +1,36 @@
 package com.mk.stefan.hotel.controllers;
 
-import com.mk.stefan.hotel.repositories.MenuRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mk.stefan.hotel.model.Menu;
+import com.mk.stefan.hotel.services.menu.MenuService;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MenuController {
 
-    private final MenuRepository menuRepository;
+    private final MenuService menuService;
 
-    public MenuController(MenuRepository menuRepository) {
-        this.menuRepository = menuRepository;
+    public MenuController(MenuService menuService) {
+        this.menuService = menuService;
     }
 
-    @RequestMapping("/menu")
-    public  String getMenus(Model model){
+    @GetMapping("/getallmenu")
+    public List<Menu> getAllMenu() {
+        return  menuService.getAllMenu();
+    }
 
-        model.addAttribute("menus", menuRepository.findAll());
+    @GetMapping("/getallmenubytypeofmeal/{typeOfMeal}")
+    public List<Menu> getAllMenuByTypeOfMeal(@PathVariable String typeOfMeal){
+        return menuService.getAllMenuByTypeOfMeal(typeOfMeal);
+    }
 
-        return "menulist";
+    @GetMapping("/getmenubymealname/{mealName}")
+    public Optional<Menu> getByMealName(@PathVariable String mealName){
+        return menuService.getByMealName(mealName);
     }
 
 }
