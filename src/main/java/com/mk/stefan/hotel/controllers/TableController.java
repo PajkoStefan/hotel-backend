@@ -1,24 +1,31 @@
 package com.mk.stefan.hotel.controllers;
 
-import com.mk.stefan.hotel.repositories.TableRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mk.stefan.hotel.model.Table;
+import com.mk.stefan.hotel.services.table.TableService;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TableController {
 
-    private final TableRepository tableRepository;
+    private final TableService tableService;
 
-    public TableController(TableRepository tableRepository) {
-        this.tableRepository = tableRepository;
+    public TableController(TableService tableService) {
+        this.tableService = tableService;
     }
 
-    @RequestMapping("/table")
-    public  String getTables(Model model){
 
-        model.addAttribute("tables", tableRepository.findAll());
+    @GetMapping("/getalltables")
+    public List<Table> getAllTables() {
+        return tableService.getAllTables();
+    }
 
-        return "tablelist";
+    @GetMapping("/gettablebytablenumber/{tableNumber}")
+    public Optional<Table> getTableByTableNumber(@PathVariable String tableNumber) {
+        return tableService.getTableByTableNumber(tableNumber);
     }
 }
