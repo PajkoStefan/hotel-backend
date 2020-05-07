@@ -17,7 +17,7 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String offer;
+    private String offerName;
 
     private String description;
 
@@ -29,8 +29,8 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(String offer, String description, String price) {
-        this.offer = offer;
+    public Offer(String offerName, String description, String price) {
+        this.offerName = offerName;
         this.description = description;
         this.price = price;
     }
@@ -38,7 +38,7 @@ public class Offer {
     @Override
     public String toString() {
         return "Offer{" +
-                "offer='" + offer + '\'' +
+                "offerName='" + offerName + '\'' +
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
                 '}';

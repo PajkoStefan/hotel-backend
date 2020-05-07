@@ -1,7 +1,12 @@
 package com.mk.stefan.hotel.repositories;
 
 import com.mk.stefan.hotel.model.Offer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OfferRepository extends CrudRepository<Offer, Long> {
+import java.util.Optional;
+
+public interface OfferRepository extends JpaRepository<Offer, Long> {
+
+    Optional<Offer> getOfferByOfferName(String offerName);
+
 }

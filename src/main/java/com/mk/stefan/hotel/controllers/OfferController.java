@@ -1,26 +1,30 @@
 package com.mk.stefan.hotel.controllers;
 
-import com.mk.stefan.hotel.repositories.OfferRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mk.stefan.hotel.model.Offer;
+import com.mk.stefan.hotel.services.offer.OfferService;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OfferController {
 
-    private final OfferRepository offerRepository;
+    private final OfferService offerService;
 
-    public OfferController(OfferRepository offerRepository) {
-        this.offerRepository = offerRepository;
+    public OfferController(OfferService offerService) {
+        this.offerService = offerService;
     }
 
-    @RequestMapping("/offer")
-    public  String getMenus(Model model){
-
-        model.addAttribute("offers", offerRepository.findAll());
-
-        return "offerlist";
+    @GetMapping("/getalloffers")
+    public List<Offer> getAllOffers() {
+        return  offerService.getAllOffers();
     }
 
-
+    @GetMapping("/getofferbyname/{offerName}")
+    public Optional<Offer> getOfferByName(@PathVariable String offerName){
+        return offerService.getOfferByName(offerName);
+    }
 }
