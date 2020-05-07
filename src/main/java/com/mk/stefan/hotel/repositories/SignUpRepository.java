@@ -1,7 +1,10 @@
 package com.mk.stefan.hotel.repositories;
 
 import com.mk.stefan.hotel.model.SignUp;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SignUpRepository extends CrudRepository<SignUp, Long> {
+import java.util.Optional;
+
+public interface SignUpRepository extends JpaRepository<SignUp, Long> {
+    Optional<SignUp> getSignUpByUsername(String username);
 }
