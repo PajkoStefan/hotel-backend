@@ -34,16 +34,23 @@ public class Order {
     @Column(name = "order_time")
     private String time;
 
+    @Column(name = "additional_request")
+    private String additionalRequest;
+
     public Order() {
     }
 
-    public Order(String firstName, String lastName, String roomNumber, String billNumber, String startDate, String time) {
+    public Order(String firstName, String lastName,
+                 String roomNumber, String billNumber,
+                 String startDate, String time,
+                 String additionalRequest) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.roomNumber = roomNumber;
         this.billNumber = billNumber;
         this.startDate = startDate;
         this.time = time;
+        this.additionalRequest = additionalRequest;
     }
 
     @Override
@@ -55,6 +62,7 @@ public class Order {
                 ", billNumber='" + billNumber + '\'' +
                 ", startDate='" + startDate + '\'' +
                 ", time='" + time + '\'' +
+                ", additionalRequest='" + additionalRequest + '\'' +
                 '}';
     }
 
