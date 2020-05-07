@@ -23,7 +23,7 @@ public class Account {
     @OneToOne(cascade = CascadeType.ALL)
     private SignUp signUp;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "account")
     private Login login;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -47,8 +47,6 @@ public class Account {
     public Account(String username) {
         this.username = username;
     }
-
-
     @Override
     public String toString() {
         return "Account{" +
