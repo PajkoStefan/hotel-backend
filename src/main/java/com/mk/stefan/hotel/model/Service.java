@@ -19,17 +19,13 @@ public class Service {
     @Column(name = "service_name")
     private String serviceName;
 
-    @Column(name = "additional_request")
-    private String additionalRequest;
-
     private String price;
 
     public Service() {
     }
 
-    public Service(String serviceName, String additionalRequest, String price) {
+    public Service(String serviceName, String price) {
         this.serviceName = serviceName;
-        this.additionalRequest = additionalRequest;
         this.price = price;
     }
 
@@ -37,7 +33,6 @@ public class Service {
     public String toString() {
         return "Service{" +
                 "serviceName='" + serviceName + '\'' +
-                ", additionalRequest='" + additionalRequest + '\'' +
                 ", price='" + price + '\'' +
                 '}';
     }

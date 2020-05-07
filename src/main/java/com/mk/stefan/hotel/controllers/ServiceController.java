@@ -1,25 +1,30 @@
 package com.mk.stefan.hotel.controllers;
 
-import com.mk.stefan.hotel.repositories.ServiceRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mk.stefan.hotel.model.Service;
+import com.mk.stefan.hotel.services.service.ServiceService;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ServiceController {
 
-    private final ServiceRepository serviceRepository;
+    private final ServiceService serviceService;
 
-    public ServiceController(ServiceRepository serviceRepository) {
-        this.serviceRepository = serviceRepository;
+    public ServiceController(ServiceService serviceService) {
+        this.serviceService = serviceService;
     }
 
-    @RequestMapping("/service")
-    public  String getServices(Model model){
-
-        model.addAttribute("services", serviceRepository.findAll());
-
-        return "servicelist";
+    @GetMapping("/getallservices")
+    public List<Service> getAllService() {
+        return serviceService.getAllServices();
     }
 
+    @GetMapping("/getservicebyservicename/{serviceName}")
+    public Optional<Service> getServiceByServiceName(@PathVariable String serviceName){
+        return serviceService.getServiceByServiceName(serviceName);
+    }
 }
