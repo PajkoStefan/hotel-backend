@@ -1,24 +1,31 @@
 package com.mk.stefan.hotel.controllers;
 
-import com.mk.stefan.hotel.repositories.RoomRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mk.stefan.hotel.model.Room;
+import com.mk.stefan.hotel.services.room.RoomService;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RoomController {
 
-    private final RoomRepository roomRepository;
+    private final RoomService roomService;
 
-    public RoomController(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
     }
 
-    @RequestMapping("/room")
-    public  String getRooms(Model model){
-
-        model.addAttribute("rooms", roomRepository.findAll());
-
-        return "roomlist";
+    @GetMapping("/getallrooms")
+    public List<Room> getAllRooms() {
+        return roomService.getAllRooms();
     }
+
+    @GetMapping("/getroombyroomnumber/{roomNumber}")
+    public Optional<Room> getRoomByRoomNumber(@PathVariable String roomNumber){
+        return roomService.getRoomByRoomNumber(roomNumber);
+    }
+
 }
