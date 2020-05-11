@@ -1,6 +1,7 @@
 package com.mk.stefan.hotel.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,6 +37,7 @@ public class SignUp {
     @Column(name="signup_date")
     private String signUpDate;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "signUp")
     private Account account;
 
