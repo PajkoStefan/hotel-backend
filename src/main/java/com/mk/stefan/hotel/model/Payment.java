@@ -31,7 +31,7 @@ public class Payment {
     @Column(name = "expiration_date_year")
     private String expirationDateYear;
 
-    @OneToOne(mappedBy = "payment")
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
     public Payment() {

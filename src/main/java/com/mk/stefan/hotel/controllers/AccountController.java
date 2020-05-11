@@ -37,7 +37,8 @@ public class AccountController {
                 buildAndExpand(account.getId()).toUriString());
         //
 
-        return accountService.createNewAccount(account1.getUsername());
+        return accountService.createNewAccount(account1.getUsername(), account.getSignUp());
+
     }
 }
 

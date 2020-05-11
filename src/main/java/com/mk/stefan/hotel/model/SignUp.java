@@ -33,7 +33,7 @@ public class SignUp {
 
     private String birthday;
 
-    @Column(name="sign_up_date")
+    @Column(name="signup_date")
     private String signUpDate;
 
     @OneToOne(mappedBy = "signUp")

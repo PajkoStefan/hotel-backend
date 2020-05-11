@@ -1,6 +1,7 @@
 package com.mk.stefan.hotel.services.account.Impl;
 
 import com.mk.stefan.hotel.model.Account;
+import com.mk.stefan.hotel.model.SignUp;
 import com.mk.stefan.hotel.repositories.AccountRepository;
 import com.mk.stefan.hotel.services.account.AccountService;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createNewAccount(String username) {
+    public Account createNewAccount(String username, SignUp signUp) {
         Account account = new Account(username);
+        account.setSignUp(signUp);
         return this.accountRepository.save(account);
     }
 

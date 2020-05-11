@@ -14,6 +14,6 @@ public interface SignUpService {
     SignUp createNewSignUp(String firstName, String lastName,
                            String username, String password,
                            String email, String gender,
-                           String birthyday, String signUpDate);
+                           String birthday, String signUpDate);
 
 }

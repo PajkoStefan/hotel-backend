@@ -26,7 +26,7 @@ public class Account {
     @OneToOne(mappedBy = "account")
     private Login login;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "account")
     private Payment payment;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")

@@ -1,6 +1,7 @@
 package com.mk.stefan.hotel.services.signup.Impl;
 
 import com.mk.stefan.hotel.model.SignUp;
+import com.mk.stefan.hotel.repositories.AccountRepository;
 import com.mk.stefan.hotel.repositories.SignUpRepository;
 import com.mk.stefan.hotel.services.signup.SignUpService;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,11 @@ import java.util.Optional;
 public class SignUpServiceImpl implements SignUpService {
 
     private final SignUpRepository signUpRepository;
+    private final AccountRepository accountRepository;
 
-    public SignUpServiceImpl(SignUpRepository signUpRepository) {
+    public SignUpServiceImpl(SignUpRepository signUpRepository, AccountRepository accountRepository) {
         this.signUpRepository = signUpRepository;
+        this.accountRepository = accountRepository;
     }
 
     @Override
@@ -32,8 +35,11 @@ public class SignUpServiceImpl implements SignUpService {
     public SignUp createNewSignUp(String firstName, String lastName,
                                   String username, String password,
                                   String email, String gender,
-                                  String birthyday, String signUpDate) {
-        SignUp signUp = new SignUp(firstName, lastName, username, password, email, gender, birthyday, signUpDate);
+                                  String birthday, String signUpDate) {
+
+        SignUp signUp = new SignUp(firstName, lastName, username, password, email, gender, birthday, signUpDate);
+
         return signUpRepository.save(signUp);
+
     }
 }

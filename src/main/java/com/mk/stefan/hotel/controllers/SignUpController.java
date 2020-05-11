@@ -1,6 +1,7 @@
 package com.mk.stefan.hotel.controllers;
 
 import com.mk.stefan.hotel.model.SignUp;
+import com.mk.stefan.hotel.services.account.AccountService;
 import com.mk.stefan.hotel.services.signup.SignUpService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,12 @@ import java.util.Optional;
 public class SignUpController {
 
     private final SignUpService signUpService;
+    private final AccountService accountService;
 
-    public SignUpController( SignUpService signUpService) {
+    public SignUpController(SignUpService signUpService, AccountService accountService) {
         this.signUpService = signUpService;
+        this.accountService = accountService;
+
     }
 
     @GetMapping("/getallsignups")
@@ -27,7 +31,7 @@ public class SignUpController {
     }
 
     @GetMapping("/getsignupbyusername/{username}")
-    public Optional<SignUp> getSignUpByUsername(@PathVariable String username){
+    public Optional<SignUp> getSignUpByUsername(@PathVariable String username) {
         return signUpService.getSignUpByUsername(username);
     }
 
@@ -36,18 +40,17 @@ public class SignUpController {
     @ResponseBody
     public SignUp createNewSignUp(@RequestBody SignUp signUp,
                                   HttpServletResponse response,
-                                  UriComponentsBuilder builder){
+                                  UriComponentsBuilder builder) {
 
-        SignUp signUp1 = new SignUp(signUp.getFirstName(), signUp.getLastName(),
+        SignUp signUp1 = signUpService.createNewSignUp(signUp.getFirstName(), signUp.getLastName(),
                 signUp.getUsername(), signUp.getPassword(), signUp.getEmail(),
                 signUp.getGender(), signUp.getBirthday(), signUp.getSignUpDate());
 
-        response.setHeader("Location", builder.path("/api/createsignup/"+signUp.getId()).
-                buildAndExpand(signUp.getId()).toUriString());
+        response.setHeader("Location", builder.path("/api/createsignup/" + signUp.getId()).
+                buildAndExpand(signUp1.getId()).toUriString());
 
-        return signUpService.createNewSignUp(signUp1.getFirstName(), signUp1.getLastName(),
-                signUp1.getUsername(), signUp1.getPassword(), signUp1.getEmail(),
-                signUp1.getGender(), signUp1.getBirthday(), signUp1.getSignUpDate());
+        accountService.createNewAccount(signUp1.getUsername(), signUp1);
 
+        return signUp1;
     }
 }
