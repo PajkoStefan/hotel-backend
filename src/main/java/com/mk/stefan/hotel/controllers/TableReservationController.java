@@ -20,7 +20,7 @@ public class TableReservationController {
         this.tableReservationService = tableReservationService;
     }
 
-    @RequestMapping("/getalltablereservations")
+    @GetMapping("/getalltablereservation")
     public List<TableReservation> getAllTableReservations() {
         return tableReservationService.getAllTableReservations();
     }
