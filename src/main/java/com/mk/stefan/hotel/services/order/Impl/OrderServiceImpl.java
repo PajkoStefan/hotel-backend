@@ -24,10 +24,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order crateNewOrder(String firstName, String lastName, String roomNumber,
-                               String billNumber, String startDate, String time,
+                               String billNumber, String orderDate, String time,
                                String additionalRequest) {
 
-        Order order = new Order(firstName, lastName, roomNumber, billNumber, startDate, time, additionalRequest);
+        Order order = new Order(firstName, lastName, roomNumber, billNumber, orderDate, time, additionalRequest);
         return orderRepository.save(order);
     }
 

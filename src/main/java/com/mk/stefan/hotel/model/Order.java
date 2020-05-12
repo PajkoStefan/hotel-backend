@@ -29,7 +29,7 @@ public class Order {
     private String billNumber;
 
     @Column(name = "order_date")
-    private String startDate;
+    private String orderDate;
 
     @Column(name = "order_time")
     private String time;
@@ -48,7 +48,7 @@ public class Order {
         this.lastName = lastName;
         this.roomNumber = roomNumber;
         this.billNumber = billNumber;
-        this.startDate = startDate;
+        this.orderDate = startDate;
         this.time = time;
         this.additionalRequest = additionalRequest;
     }
@@ -60,7 +60,7 @@ public class Order {
                 ", lastName='" + lastName + '\'' +
                 ", roomNumber='" + roomNumber + '\'' +
                 ", billNumber='" + billNumber + '\'' +
-                ", startDate='" + startDate + '\'' +
+                ", orderDate='" + orderDate + '\'' +
                 ", time='" + time + '\'' +
                 ", additionalRequest='" + additionalRequest + '\'' +
                 '}';
