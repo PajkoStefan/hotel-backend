@@ -1,5 +1,6 @@
 package com.mk.stefan.hotel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Login {
     @Column(name="login_date")
     private String loginDate;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
