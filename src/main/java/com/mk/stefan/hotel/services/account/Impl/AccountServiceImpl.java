@@ -7,6 +7,7 @@ import com.mk.stefan.hotel.services.account.AccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -22,6 +23,11 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> getAllAccounts() {
         System.out.println(accountRepository.findAll());
         return accountRepository.findAll();
+    }
+
+    @Override
+    public Optional<Account> getByUsername(String username) {
+        return accountRepository.findByUsername(username);
     }
 
     @Override

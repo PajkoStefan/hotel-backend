@@ -1,6 +1,7 @@
 package com.mk.stefan.hotel.controllers;
 
 import com.mk.stefan.hotel.model.Account;
+import com.mk.stefan.hotel.model.Login;
 import com.mk.stefan.hotel.services.account.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +24,11 @@ public class AccountController {
     @GetMapping("/getallaccounts")
     public List<Account> getAllAccounts() {
         return  accountService.getAllAccounts();
+    }
+
+    @GetMapping("/getaccountbyusername/{username}")
+    public Optional<Account> getAccountUsername(@PathVariable String username) {
+        return this.accountService.getByUsername(username);
     }
 
     @PostMapping("/createaccount")
