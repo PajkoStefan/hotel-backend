@@ -54,12 +54,14 @@ public class BootStrapData implements CommandLineRunner {
 
         Account account1 = new Account("stevo");
 
-        accountRepository.save(account1);
+
 
         //--------------------------------------------------
 
         SignUp signup1 = new SignUp("Stefan", "Anastasovski", "Stevo",
                 "1234", "stefan@gmail.com", "male", "10-02-1996", "today");
+        account1.setSignUp(signup1);
+        accountRepository.save(account1);
 
         signUpRepository.save(signup1);
 
@@ -145,9 +147,23 @@ public class BootStrapData implements CommandLineRunner {
 
         //--------------------------------------------------
 
-        Service service1 = new Service("towels", "12");
+        Service service1 = new Service("Bath Towels", "12");
+        Service service2 = new Service("Hand Towels", "14");
+        Service service3 = new Service("Wash Cloths", "13");
+        Service service4 = new Service("Bath Mats", "15");
+        Service service5 = new Service("Flat Sheets", "11");
+        Service service6 = new Service("Fitted Sheets", "6");
+        Service service7 = new Service("Pillowcases", "7");
+        Service service8 = new Service("Room Cleaning", "20");
 
         serviceRepository.save(service1);
+        serviceRepository.save(service2);
+        serviceRepository.save(service3);
+        serviceRepository.save(service4);
+        serviceRepository.save(service5);
+        serviceRepository.save(service6);
+        serviceRepository.save(service7);
+        serviceRepository.save(service8);
 
         //--------------------------------------------------
 
